@@ -30,6 +30,25 @@
     padding: 0px;
 }
 
+.navlinks{
+    margin-left: 10%;  /* Adjust the left margin */
+    margin-right: 10%; /* Adjust the right margin */
+}
+
+.searchnav {
+    max-width: 200px; /* Set the maximum width of the input field */
+    width: 100%; /* Allow it to expand up to max-width without breaking responsiveness */
+}
+
+
+/* Apply margin to the search bar only when the navbar collapses (on small screens) */
+@media (max-width: 767px) {
+    .navbar-collapse .d-flex {
+        margin-bottom: 20px;  /* Adjust the margin as needed */
+    }
+}
+
+
 
 
 .hero-section {
