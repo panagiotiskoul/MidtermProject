@@ -9,16 +9,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/Site_Logo/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 
 <body>
+    <script>
+        $(document).ready(function() {
+            // When mouse enters the logo image
+            $(".navbar-brand img").hover(
+                    function() {
+                        $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change to hover image
+                    }, 
+                    function() {
+                        $(this).attr("src", "./images/Site_Logo/logo.png"); // Change back to original image
+                    }
+                );
+        });
+    </script>
+
 
     <header>
         <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
-                    <img src="./images/Site_Logo/north_logo.png" alt="North Hiking Logo" class="logo-img">
+                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
                 </a>
     
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +60,6 @@
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item flex-fill">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -58,21 +71,239 @@
     </header>
 
 
+    <script>
+        $(document).ready(function() {
+            // When mouse enters the member image
+            $(".panos-img img").hover(
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/PanosBNW.jpg"); // Change to hover image
+                    }, 
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/Panos.jpg"); // Change back to original image
+                    }
+                );
+        });
+    
+        $(document).ready(function() {
+            // When mouse enters the member image
+            $(".andreas-img img").hover(
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/AndreasBNW.jpg"); // Change to hover image
+                    }, 
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/Andreas.jpg"); // Change back to original image
+                    }
+                );
+        });
+
+        $(document).ready(function() {
+            // When mouse enters the member image
+            $(".pandelis-img img").hover(
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/PandelisBNW.jpg"); // Change to hover image
+                    }, 
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/Pandelis.jpg"); // Change back to original image
+                    }
+                );
+        });
+
+        $(document).ready(function() {
+            // When mouse enters the member image
+            $(".nikolas-img img").hover(
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/NikolasBNW.jpg"); // Change to hover image
+                    }, 
+                    function() {
+                        $(this).attr("src", "./images/Our_Team/Nikolas.jpg"); // Change back to original image
+                    }
+                );
+        });
+    </script>
+
+
+
+
+
+
     <main>
 
 
+        
+        <section class="members">
+            
+            <div class="container">
 
+                <div class="normal_title">
+                    <h2>Our Team</h2>
+                </div>
 
+                <div class="row justify-content-center">
+                        <p class="justify">
+                            Our team is a dedicated group of passionate individuals united by a love for adventure, the outdoors, and delivering exceptional experiences. With diverse backgrounds in technology, design, finance, and creativity, we bring a wealth of expertise to the table, ensuring that every aspect of our platform is crafted with care and precision. Our first priority is to provide our clients with the best possible experience, offering expert tips, curated hiking routes, and personalized adventure planning. We are committed to helping you explore nature's beauty in a way that is both thrilling and unforgettable, whether you're embarking on your first hike or looking for new challenges to conquer. Together, we strive to create meaningful and memorable journeys for every adventurer.
+                        </p>
+                </div>
 
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div class="panos-img">
+                            <img src="./images/Our_Team/Panos.jpg" class="img-fluid rounded-5" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div>
+                            <h3 class="about-title">Panos (Founder)</h3>
+                            <p class="justify">Meet Panos, the founder of this website, a computer science student and a passionate hiker with over 10 years of experience exploring nature’s most breathtaking trails. Combining his love for technology and the outdoors, Panos created this platform to share his knowledge, inspire adventure, and help others experience the beauty of hiking. Whether you're a beginner looking for guidance or an experienced trekker seeking new challenges, this site is designed to provide expert tips, curated routes, and personalized hiking experiences.</p>
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div class="andreas-img">
+                            <img src="./images/Our_Team/Andreas.jpg" class="img-fluid rounded-5" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div>
+                            <h3>Andreas (Coordinator)</h3>
+                            <p class="justify">The first member to join the team, Andreas is not only an architect but also Panos's best friend since childhood. Growing up together, their shared love for adventure and the outdoors led them to explore countless trails side by side. With his keen eye for design and deep appreciation for natural landscapes, Andreas brings a unique perspective to the team, helping craft unforgettable hiking experiences that blend adventure with aesthetic beauty.</p>
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div class="pandelis-img">
+                            <img src="./images/Our_Team/Pandelis.jpg" class="img-fluid rounded-5" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div>
+                            <h3>Padelis (Finance Manager)</h3>
+                            <p class="justify">Padelis is a young and ambitious entrepreneur with a passion for sports and hiking. With a background in finance and business management, he plays a crucial role in overseeing the financial operations of the company, ensuring its long-term stability and growth. Beyond his expertise in economics, Padelis is an avid outdoor enthusiast who enjoys discovering new hiking trails. His love for adventure aligns perfectly with the company’s mission, as he actively contributes ideas on how to improve and expand the platform.</p>
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div class="nikolas-img">
+                            <img src="./images/Our_Team/Nikolas.jpg" class="img-fluid rounded-5" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-md-5 col-sm-12 col-xs-12 my-3 mx-auto">
+                        <div>
+                            <h3>Nikolas (Creative Director)</h3>
+                            <p class="justify">The first member to join the team, Andreas is not only an architect but also Panos's best friend since childhood. Growing up together, their shared love for adventure and the outdoors led them to explore countless trails side by side. With his keen eye for design and deep appreciation for natural landscapes, Andreas brings a unique perspective to the team, helping craft unforgettable hiking experiences that blend adventure with aesthetic beauty.</p>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
 
-
+        </section>
     </main>
 
 
-    <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
-    </footer>
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container mt-5">
+                <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fa-solid fa-mountain"></i>&nbsp;&nbsp;North Hiking
+                            </h6>
+                            <p>
+                                <a href="#" class="text-reset">FAQ</a>
+                            </p>
+                            <p>
+                                <a href="#" class="text-reset">Privacy Policy</a>
+                            </p>
+                            <p>
+                                <a href="#" class="text-reset">Terms & Conditions</a>
+                            </p>
+                            <p>
+                                <a href="#" class="text-reset">Legal Notice</a>
+                            </p>
+                        </div>
+    
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Navigation
+                            </h6>
+                            <p>
+                                <a href="index.html" class="text-reset">Home</a>
+                            </p>
+                            <p>
+                                <a href="trips.html" class="text-reset">Trips</a>
+                            </p>
+                            <p>
+                                <a href="tasks.html" class="text-reset">Tasks</a>
+                            </p>
+                            <p>
+                                <a href="shop.html" class="text-reset">Shop</a>
+                            </p>
+                            <p>
+                                <a href="about.html" class="text-reset">About</a>
+                            </p>
+                            <p>
+                                <a href="contact.html" class="text-reset">Contact</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+    
+                        <!-- Social Media Links -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    Social Media
+                                </h6>
+                                <p>
+                                    <a href="https://www.facebook.com/" class="text-reset">Facebook</a>
+                                    <i class="fab fa-facebook-f"></i>
+                                </p>
+                                <p>
+                                    <a href="https://www.instagram.com/" class="text-reset">Instagram</a>
+                                    <i class="fab fa-instagram"></i>
+                                </p>
+                                <p>
+                                    <a href="https://www.tiktok.com/" class="text-reset">TikTok</a>
+                                    <i class="fab fa-tiktok"></i>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+            
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p><i class="fas fa-home me-3"></i> Athens, 12649, Greece</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                north_hiking@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> +30 210 810 2994</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+        
+            <!-- Copyright -->
+            <div class="text-center">
+            <p>© 2025 Copyright: Panos North</p>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
