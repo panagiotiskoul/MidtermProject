@@ -16,50 +16,66 @@
 
 
 <body>
+    <!-- Script that Animates the Logo Image of the Navbar -->
     <script>
+        // Wait for the document to be fully loaded before executing the script
         $(document).ready(function() {
-            // When mouse enters the logo image
+            
+            // When the mouse enters the logo image
             $(".navbar-brand img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Site_Logo/logo.png"); // Change back to original image
-                    }
-                );
+                function() {
+                    // This function is triggered when the mouse enters the image
+                    $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change the image source to the hover version
+                }, 
+                function() {
+                    // This function is triggered when the mouse leaves the image
+                    $(this).attr("src", "./images/Site_Logo/logo.png"); // Change the image source back to the original version
+                }
+            );
         });
     </script>
 
 
     <header>
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <!-- Main navigation bar -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top" aria-label="Navigation menu">
             <div class="container-fluid">
+                
+                <!-- Logo and home link -->
                 <a class="navbar-brand" href="index.html">
-                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
+                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Trips Logo" class="logo-img">
                 </a>
 
+                <!-- Mobile menu toggle button (visible on small screens) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Collapsible menu that appears on larger screens -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks">                      
-                        <li class="nav-item flex-fill"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="trips.html">Trips</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link active" href="tasks.html">Tasks</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <!-- Navigation links (Home, Trips, Tasks, About, Contact) -->
+                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks" role="menu">
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="index.html" role="menuitem">Home</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="trips.html" role="menuitem">Trips</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link active" aria-current="page" href="tasks.html" role="menuitem">Tasks</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="about.html" role="menuitem">About</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="contact.html" role="menuitem">Contact</a></li>
                     </ul>
-                    
+
                     <!-- Dark Mode Toggle Button -->
-                    <div class="dark-mode-container ">
-                        <button id="darkModeToggle" class="btn btn-primary" type="button">Dark</button>
+                    <div class="dark-mode-container">
+                        <button id="darkModeToggle" class="btn btn-primary" type="button" aria-label="Toggle dark mode">
+                            Dark
+                        </button>
                     </div>
-                    
-                    <form class="d-flex justify-content-center" role="search">
-                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+
+                    <!-- Search form -->
+                    <form class="d-flex justify-content-center" role="search" aria-label="Site search">
+                        <!-- Search input field -->
+                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search query">
+                        <!-- Submit button for the search -->
+                        <button class="btn btn-outline-success" type="submit" aria-label="Submit search">Search</button>
                     </form>
                 </div>
             </div>
@@ -77,6 +93,7 @@
                 $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
                 $("#footer").addClass("footer-dark");
                 $("#darkModeToggle").text("Light");
+                $("hr").addClass("seperator"); // Add .separator to all <hr> elements
             }
 
             // Handle button click for dark mode toggle
@@ -96,6 +113,9 @@
                 // Toggle footer-dark class on footer
                 $("#footer").toggleClass("footer-dark");
 
+                // Toggle .separator class on all <hr> elements
+                $("hr").toggleClass("separator");
+
                 // Change the button text between "Dark" and "Light"
                 var buttonText = $("#darkModeToggle").text().trim();
                 if (buttonText === "Dark") {
@@ -110,114 +130,107 @@
     </script>
 
 
-    
-
     <div class="itemsmargins">
         <main class="container mt-4">
             <!-- Form for adding items -->
             <div class="form-container">
-                <h3 class="text-center">Create your Checklist</h3>
-                <form id="itemForm">
-    
+                <!-- Heading for the form -->
+                <h2 class="text-center" id="formHeading">Create your Checklist</h2>
+                <form id="itemForm" aria-labelledby="formHeading">
+        
                     <div class="row">
-                        <!-- Trip Date (this will be selected once) -->
+                        <!-- Trip Date input field (selected once) -->
                         <div class="col-md-6 mb-3">
-                            <label for="tripDate" class="form-label">Select Trip Date:</label>
-                            <input type="date" id="tripDate" name="tripDate" class="form-control" required>
+                            <label for="tripDate" class="form-label" aria-label="Select Trip Date">Select Trip Date:</label>
+                            <input type="date" id="tripDate" name="tripDate" class="form-control" required aria-required="true">
                         </div>
                     </div>
-    
-                    <!-- Grid layout for Item Name, Quantity, Priority, Description -->
+        
+                    <!-- Grid layout for Item Name, Quantity, Priority, and Description -->
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="itemName">Item Name:</label>
-                            <input type="text" id="itemName" name="itemName" class="form-control" required>
+                            <!-- Item Name input field -->
+                            <label for="itemName" aria-label="Enter item name">Item Name:</label>
+                            <input type="text" id="itemName" name="itemName" class="form-control" required aria-required="true" aria-placeholder="Enter the name of the item">
                         </div>
-    
+        
                         <div class="col-md-3 mb-3">
-                            <label for="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" class="form-control" required min="1">
+                            <!-- Quantity input field (ensures a minimum of 1 item) -->
+                            <label for="quantity" aria-label="Enter item quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control" required min="1" aria-required="true" aria-placeholder="Enter the number of items">
                         </div>
-    
+        
                         <div class="col-md-3 mb-3">
-                            <label for="priority">Priority:</label>
-                            <select id="priority" name="priority" class="form-select" required>
+                            <!-- Priority dropdown with options: High, Medium, Low -->
+                            <label for="priority" aria-label="Select item priority">Priority:</label>
+                            <select id="priority" name="priority" class="form-select" required aria-required="true">
                                 <option value="High">High</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Low">Low</option>
                             </select>
                         </div>
-    
+        
                         <div class="col-md-12">
-                            <label for="itemDesc">Description:</label>
-                            <input type="text" id="itemDesc" name="itemDesc" class="form-control" required>
+                            <!-- Item Description input field -->
+                            <label for="itemDesc" aria-label="Enter item description">Description:</label>
+                            <input type="text" id="itemDesc" name="itemDesc" class="form-control" required aria-required="true" aria-placeholder="Enter a description for the item">
                         </div>
                     </div><br>
-    
-                    <button type="button" id="addItemBtn" class="btn btn-primary">Add Item</button>
-                    <button type="button" id="updateItemBtn" class="btn btn-warning" style="display:none;">Update Item</button>
+        
+                    <!-- Buttons to add or update items -->
+                    <button type="button" id="addItemBtn" class="btn btn-primary" aria-label="Add item to the list">Add Item</button>
+                    <button type="button" id="updateItemBtn" class="btn btn-warning" style="display:none;" aria-label="Update selected item">Update Item</button>
                 </form>
             </div>
-    
-            <!-- Item Table -->
-            <h3>Item List</h3>
-            <table class="table items">
+        
+            <!-- Section to display the list of items -->
+            <h3 id="itemListHeading" aria-label="Item List">Item List</h3>
+            <table class="table items" aria-labelledby="itemListHeading">
                 <thead>
+                    <!-- Table headers for item details -->
                     <tr>
-                        <th>Complete</th>
-                        <th>Item Name</th>
-                        <th>Description</th>
-                        <th>Trip Date</th>
-                        <th>Quantity</th>
-                        <th>Priority</th>
-                        <th>Actions</th>
+                        <th scope="col" aria-label="Mark item as complete">Complete</th>
+                        <th scope="col" aria-label="Item name">Item Name</th>
+                        <th scope="col" aria-label="Item description">Description</th>
+                        <th scope="col" aria-label="Trip date">Trip Date</th>
+                        <th scope="col" aria-label="Quantity of items">Quantity</th>
+                        <th scope="col" aria-label="Priority level of item">Priority</th>
+                        <th scope="col" aria-label="Actions for item">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="itemTable">
-                    <!-- New rows will be added here -->
+                    <!-- New rows with item data will be added dynamically here -->
                 </tbody>
             </table>
 
-
-
-
-
-
-
-            <h3>Item Status Overview</h3>
-            <table class="table">
+            <!-- Section for displaying an overview of item status -->
+            <h3 id="statusOverviewHeading" aria-label="Item Status Overview">Item Status Overview</h3>
+            <table class="table" aria-labelledby="statusOverviewHeading">
                 <thead>
+                    <!-- Table headers for status overview -->
                     <tr>
-                        <th>Item Status</th>
-                        <th>Count</th>
+                        <th scope="col" aria-label="Item status type">Item Status</th>
+                        <th scope="col" aria-label="Count of items in each status">Count</th>
                     </tr>
                 </thead>
                 <tbody id="statusTable">
+                    <!-- Rows to display counts of packed, pending, and total items -->
                     <tr>
                         <td>Packed Items</td>
-                        <td id="packedCount">0</td>
+                        <td id="packedCount" aria-label="Number of packed items">0</td>
                     </tr>
                     <tr>
                         <td>Pending Items</td>
-                        <td id="pendingCount">0</td>
+                        <td id="pendingCount" aria-label="Number of pending items">0</td>
                     </tr>
                     <tr>
                         <td>Total Items</td>
-                        <td id="totalCount">0</td>
+                        <td id="totalCount" aria-label="Total number of items">0</td>
                     </tr>
                 </tbody>
             </table>
 
 
-
-
-
-
-
-
-
-
-    
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script>
                 $(document).ready(function () {
@@ -370,34 +383,21 @@
     
                 });
             </script>
+
         </main>
     </div>
     
     
-    
-    
-    
+    <!-- Footer --> 
+    <footer id="footer" class="text-center text-lg-start text-muted" aria-label="Footer">
 
-    
-    
-    
-
-
-
-
-
-
-
-    <!-- Footer -->
-    <footer id="footer" class="text-center text-lg-start text-muted">
-  
         <!-- Section: Links  -->
         <section class="">
             <div class="container mt-5">
             <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" aria-label="Legal and Policy Links">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             <i class="fa-solid fa-mountain"></i>&nbsp;&nbsp;North Hiking
@@ -416,7 +416,7 @@
                         </p>
                     </div>
 
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" aria-label="Navigation Links">
                     <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             Navigation
@@ -440,7 +440,7 @@
                     <!-- Grid column -->
 
                     <!-- Social Media Links -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" aria-label="Social Media Links">
                         <!-- Links -->
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Social Media
@@ -461,7 +461,7 @@
                         <!-- Grid column -->
         
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" aria-label="Contact Information">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                         <p><i class="fas fa-home me-3"></i> Athens, 12649, Greece</p>
@@ -476,15 +476,13 @@
                 <!-- Grid row -->
 
                 <!-- Copyright -->
-                <div class="text-center">
+                <div class="text-center" aria-label="Copyright Information">
                     © 2025 Copyright: Panos North
                 </div>
                 <!-- Copyright -->
             </div>
-
         </section>
         <!-- Section: Links  -->
-    
     </footer>
     <!-- Footer -->
 

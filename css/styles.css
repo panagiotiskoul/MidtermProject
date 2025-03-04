@@ -107,7 +107,7 @@
 }
 
 .welcome-box {
-    background: rgba(255, 255, 255, 0.6); /* Initial semi-transparent white */
+    background: rgba(255, 255, 255, 0.7); /* Initial semi-transparent white */
     opacity: 0.8;
     padding: 30px;
     max-width: 800px;
@@ -120,7 +120,7 @@
 }
 
 .welcome-box-dark {
-    background: rgba(75, 75, 75, 0.6); /* Initial semi-transparent white */
+    background: rgba(75, 75, 75, 0.7); /* Initial semi-transparent white */
     opacity: 0.8;
     padding: 30px;
     max-width: 800px;
@@ -136,6 +136,11 @@
 
 h2 {
     font-size: 28px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 23px;
     margin-bottom: 15px;
 }
 
@@ -214,10 +219,10 @@ footer .text-reset {
 
 .map-container {
     position: relative;
-    width: 80%; /* Adjust width as needed */
-    max-width: 900px; /* Limit max width */
-    padding-top: 56.25%; /* Maintain aspect ratio (16:9) */
+    width: 50%; /* Adjust width as needed */
+    max-width: 550px; /* Limit max width */
     margin: 0 auto; /* Centers the map horizontally */
+    aspect-ratio: 1 / 1; /* Ensures a square aspect ratio */
 }
 
 .map-container iframe {
@@ -225,11 +230,12 @@ footer .text-reset {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60%;
+    height: 100%;
     border: 0;
     border-radius: 15px; /* Adds rounded edges */
-    border: none; /* Removes default border */
 }
+
+
 
 
 /* About Page */
@@ -264,4 +270,10 @@ footer .text-reset {
 .trips-title {
     margin-left:15%;
     margin-top: 5%;
+}
+
+
+
+.seperator {
+    border: 1px solid #ababab; /* Change the color to your preferred color */
 }

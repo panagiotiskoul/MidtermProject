@@ -15,49 +15,66 @@
 
 
 <body>
+    <!-- Script that Animates the Logo Image of the Navbar -->
     <script>
+        // Wait for the document to be fully loaded before executing the script
         $(document).ready(function() {
-            // When mouse enters the logo image
+            
+            // When the mouse enters the logo image
             $(".navbar-brand img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Site_Logo/logo.png"); // Change back to original image
-                    }
-                );
+                function() {
+                    // This function is triggered when the mouse enters the image
+                    $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change the image source to the hover version
+                }, 
+                function() {
+                    // This function is triggered when the mouse leaves the image
+                    $(this).attr("src", "./images/Site_Logo/logo.png"); // Change the image source back to the original version
+                }
+            );
         });
     </script>
 
+
     <header>
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <!-- Main navigation bar -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top" aria-label="Navigation menu">
             <div class="container-fluid">
+                
+                <!-- Logo and home link -->
                 <a class="navbar-brand" href="index.html">
-                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
+                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Trips Logo" class="logo-img">
                 </a>
 
+                <!-- Mobile menu toggle button (visible on small screens) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Collapsible menu that appears on larger screens -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks">                      
-                        <li class="nav-item flex-fill"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="trips.html">Trips</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="tasks.html">Tasks</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <!-- Navigation links (Home, Trips, Tasks, About, Contact) -->
+                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks" role="menu">
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link active" aria-current="page" href="index.html" role="menuitem">Home</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="trips.html" role="menuitem">Trips</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="tasks.html" role="menuitem">Tasks</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="about.html" role="menuitem">About</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="contact.html" role="menuitem">Contact</a></li>
                     </ul>
-                    
+
                     <!-- Dark Mode Toggle Button -->
-                    <div class="dark-mode-container ">
-                        <button id="darkModeToggle" class="btn btn-primary" type="button">Dark</button>
+                    <div class="dark-mode-container">
+                        <button id="darkModeToggle" class="btn btn-primary" type="button" aria-label="Toggle dark mode">
+                            Dark
+                        </button>
                     </div>
-                    
-                    <form class="d-flex justify-content-center" role="search">
-                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+
+                    <!-- Search form -->
+                    <form class="d-flex justify-content-center" role="search" aria-label="Site search">
+                        <!-- Search input field -->
+                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search query">
+                        <!-- Submit button for the search -->
+                        <button class="btn btn-outline-success" type="submit" aria-label="Submit search">Search</button>
                     </form>
                 </div>
             </div>
@@ -65,7 +82,7 @@
     </header>
 
 
-    <!-- Darkmode Script -->
+    <!-- Script that applies Darkmode to the website -->
     <script>
         $(document).ready(function(){
             // Check if dark mode is enabled from localStorage and apply it
@@ -76,6 +93,7 @@
                 $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
                 $("#footer").addClass("footer-dark");
                 $("#darkModeToggle").text("Light");
+                $("hr").addClass("separator"); // Add .separator to all <hr> elements
             }
 
             // Handle button click for dark mode toggle
@@ -95,6 +113,9 @@
                 // Toggle footer-dark class on footer
                 $("#footer").toggleClass("footer-dark");
 
+                // Toggle .separator class on all <hr> elements
+                $("hr").toggleClass("separator");
+
                 // Change the button text between "Dark" and "Light"
                 var buttonText = $("#darkModeToggle").text().trim();
                 if (buttonText === "Dark") {
@@ -109,118 +130,129 @@
     </script>
 
 
-
+    <!-- Script that applies a transparency animation effect to the hero section -->
     <script>
         $(document).ready(function() {
+
+            // Apply hover effect to elements with the class "welcome-box"
             $(".welcome-box").hover(
+                
+                // First function: Triggered when the mouse enters the element
                 function() {
-                    $(this).css("opacity", "1"); // 90% opacity when hovered
+                    // Set the opacity to 1 (fully visible) when hovered
+                    $(this).css("opacity", "1");
                 },
+                
+                // Second function: Triggered when the mouse leaves the element
                 function() {
-                    $(this).css("opacity", "0.8"); // 50% opacity when hover ends
+                    // Set the opacity to 0.8 (slightly transparent) when hover ends
+                    $(this).css("opacity", "0.8");
                 }
             );
         });
     </script>
 
 
-
-    
-
-    <main>
-
-        <section class="hero-section">
+    <main aria-label="Main content">
+        <!-- Hero section with a welcoming message -->
+        <section class="hero-section" aria-labelledby="welcome-heading">
             <div id="welcome" class="welcome-box rounded-5">
-                <h2>Welcome to North Hiking Adventures</h2>
+                <h2 id="welcome-heading">Welcome to North Hiking Adventures</h2>
                 <p>Discover the beauty of Greece through unforgettable hiking experiences! At North Hiking Adventures, we organize guided hiking trips to carefully selected destinations across Greece. From breathtaking mountain trails to scenic coastal paths, our goal is to help you explore nature in the most immersive way.</p>
-                        
+                
                 <p>Founded by Panos, a passionate hiker with over 10 years of experience, our company is dedicated to providing safe, well-planned, and memorable hiking adventures. Whether you’re a beginner or an experienced trekker, we have the perfect trail for you!</p>
                     
                 <p>Join us on a journey through Greece’s stunning landscapes and make memories that will last a lifetime. Let’s hike together!</p>
             </div>
         </section>
 
-        <div class="normal_title">
-            <h2>Our Services</h2>
+        <!-- Title section for services -->
+        <div class="normal_title" aria-label="Our Services">
+            <h2 class="mt-5">Our Services</h2>
         </div>
 
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <!-- Carousel section for showcasing different services -->
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" aria-label="Hiking services carousel">
+            <!-- Carousel indicators for navigation between slides -->
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
+
+            <!-- Carousel inner content displaying each service -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./images/carousel/img (1).png" class="d-block w-100 rounded-5" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>Guided Hiking Trips</h4>
-                        <p>Explore Greece’s most breathtaking trails with our expert-led guided hikes. Each trip is carefully planned to ensure a safe and unforgettable experience. Whether you prefer mountain adventures, forest trails, or coastal paths, we have the perfect route for you.</p>
+                <!-- First carousel item: Guided Hiking Trips -->
+                <div class="carousel-item active" aria-label="Guided Hiking Trips">
+                    <img src="./images/carousel/img (1).png" class="d-block w-100 rounded-5" alt="Snowy mountain peaks covered in clouds.">
+                    <div class="carousel-caption">
+                        <h4 class="d-block">Guided Hiking Trips</h4>
+                        <p class="d-none d-md-block">Explore Greece’s most breathtaking trails with our expert-led guided hikes. Each trip is carefully planned to ensure a safe and unforgettable experience. Whether you prefer mountain adventures, forest trails, or coastal paths, we have the perfect route for you.</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="./images/carousel/img (2).png" class="d-block w-100 rounded-5" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>Custom Hiking Experiences</h4>
-                        <p>Looking for a unique hiking adventure? We offer personalized hiking trips tailored to your preferences, fitness level, and schedule. Tell us what you’re looking for, and we’ll craft an experience just for you!</p>
+
+                <!-- Second carousel item: Custom Hiking Experiences -->
+                <div class="carousel-item" aria-label="Custom Hiking Experiences">
+                    <img src="./images/carousel/img (2).png" class="d-block w-100 rounded-5" alt="Sunrise over a lake with trees reflecting.">
+                    <div class="carousel-caption">
+                        <h4 class="d-block">Custom Hiking Experiences</h4>
+                        <p class="d-none d-md-block">Looking for a unique hiking adventure? We offer personalized hiking trips tailored to your preferences, fitness level, and schedule. Tell us what you’re looking for, and we’ll craft an experience just for you!</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="./images/carousel/img (3).png" class="d-block w-100 rounded-5" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>Multi-Day Trekking Tours</h4>
-                        <p>For those who crave a longer adventure, we offer multi-day trekking experiences that allow you to fully immerse yourself in nature. Enjoy scenic campsites, authentic local experiences, and a true connection with Greece’s landscapes.</p>
+
+                <!-- Third carousel item: Multi-Day Trekking Tours -->
+                <div class="carousel-item" aria-label="Multi-Day Trekking Tours">
+                    <img src="./images/carousel/img (3).png" class="d-block w-100 rounded-5" alt="Snowy mountain peak against blue sky.">
+                    <div class="carousel-caption">
+                        <h4 class="d-block">Multi-Day Trekking Tours</h4>
+                        <p class="d-none d-md-block">For those who crave a longer adventure, we offer multi-day trekking experiences that allow you to fully immerse yourself in nature. Enjoy scenic campsites, authentic local experiences, and a true connection with Greece’s landscapes.</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="./images/carousel/img (4).png" class="d-block w-100 rounded-5" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>Hiking and Outdoor Skills Workshops</h4>
-                        <p>New to hiking? Want to improve your outdoor skills? Our workshops teach essential hiking techniques, navigation, survival skills, and safety measures to ensure you’re fully prepared for your next adventure.</p>
+
+                <!-- Fourth carousel item: Hiking and Outdoor Skills Workshops -->
+                <div class="carousel-item" aria-label="Hiking and Outdoor Skills Workshops">
+                    <img src="./images/carousel/img (4).png" class="d-block w-100 rounded-5" alt="Mountain peak under a starry night sky.">
+                    <div class="carousel-caption">
+                        <h4 class="d-block">Hiking and Outdoor Skills Workshops</h4>
+                        <p class="d-none d-md-block">New to hiking? Want to improve your outdoor skills? Our workshops teach essential hiking techniques, navigation, survival skills, and safety measures to ensure you’re fully prepared for your next adventure.</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="./images/carousel/img (5).png" class="d-block w-100 rounded-5" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>Equipment Rentals and Recommendations</h4>
-                        <p>Don’t have the right gear? No problem! We provide high-quality hiking equipment rentals, including backpacks, trekking poles, and camping gear. We also offer expert recommendations on what to bring for each trip.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/carousel/img (6).png" class="d-block w-100 rounded-5" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>New Entry</h4>
-                        <p>Lorem Ypsum.</p>
+
+                <!-- Fifth carousel item: Equipment Rentals and Recommendations -->
+                <div class="carousel-item" aria-label="Equipment Rentals and Recommendations">
+                    <img src="./images/carousel/img (5).png" class="d-block w-100 rounded-5" alt="Massive waterfall cascading down rocky cliff face.">
+                    <div class="carousel-caption">
+                        <h4 class="d-block">Equipment Rentals and Recommendations</h4>
+                        <p class="d-none d-md-block">Don’t have the right gear? No problem! We provide high-quality hiking equipment rentals, including backpacks, trekking poles, and camping gear. We also offer recommendations on what to bring for each trip.</p>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+
+            <!-- Carousel controls for navigating between items -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" aria-label="Previous slide">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" aria-label="Next slide">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-
     </main>
 
 
-    <!-- Footer -->
-    <footer id="footer" class="text-center text-lg-start text-muted">
-  
+    <!-- Footer --> 
+    <footer id="footer" class="text-center text-lg-start text-muted" aria-label="Footer">
+
         <!-- Section: Links  -->
         <section class="">
             <div class="container mt-5">
             <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" aria-label="Legal and Policy Links">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             <i class="fa-solid fa-mountain"></i>&nbsp;&nbsp;North Hiking
@@ -239,7 +271,7 @@
                         </p>
                     </div>
 
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" aria-label="Navigation Links">
                     <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             Navigation
@@ -263,7 +295,7 @@
                     <!-- Grid column -->
 
                     <!-- Social Media Links -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" aria-label="Social Media Links">
                         <!-- Links -->
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Social Media
@@ -284,7 +316,7 @@
                         <!-- Grid column -->
         
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" aria-label="Contact Information">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                         <p><i class="fas fa-home me-3"></i> Athens, 12649, Greece</p>
@@ -299,7 +331,7 @@
                 <!-- Grid row -->
 
                 <!-- Copyright -->
-                <div class="text-center">
+                <div class="text-center" aria-label="Copyright Information">
                     © 2025 Copyright: Panos North
                 </div>
                 <!-- Copyright -->
@@ -307,7 +339,7 @@
 
         </section>
         <!-- Section: Links  -->
-    
+
     </footer>
     <!-- Footer -->
 

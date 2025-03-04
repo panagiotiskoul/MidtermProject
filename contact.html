@@ -15,50 +15,66 @@
 
 
 <body>
+    <!-- Script that Animates the Logo Image of the Navbar -->
     <script>
+        // Wait for the document to be fully loaded before executing the script
         $(document).ready(function() {
-            // When mouse enters the logo image
+            
+            // When the mouse enters the logo image
             $(".navbar-brand img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Site_Logo/logo.png"); // Change back to original image
-                    }
-                );
+                function() {
+                    // This function is triggered when the mouse enters the image
+                    $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change the image source to the hover version
+                }, 
+                function() {
+                    // This function is triggered when the mouse leaves the image
+                    $(this).attr("src", "./images/Site_Logo/logo.png"); // Change the image source back to the original version
+                }
+            );
         });
     </script>
 
 
     <header>
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <!-- Main navigation bar -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top" aria-label="Navigation menu">
             <div class="container-fluid">
+                
+                <!-- Logo and home link -->
                 <a class="navbar-brand" href="index.html">
-                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
+                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Trips Logo" class="logo-img">
                 </a>
 
+                <!-- Mobile menu toggle button (visible on small screens) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Collapsible menu that appears on larger screens -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks">                      
-                        <li class="nav-item flex-fill"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="trips.html">Trips</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="tasks.html">Tasks</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link active" href="contact.html">Contact</a></li>
+                    <!-- Navigation links (Home, Trips, Tasks, About, Contact) -->
+                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks" role="menu">
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="index.html" role="menuitem">Home</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="trips.html" role="menuitem">Trips</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="tasks.html" role="menuitem">Tasks</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link" href="about.html" role="menuitem">About</a></li>
+                        <li class="nav-item flex-fill" role="none"><a class="nav-link active" aria-current="page" href="contact.html" role="menuitem">Contact</a></li>
                     </ul>
-                    
+
                     <!-- Dark Mode Toggle Button -->
-                    <div class="dark-mode-container ">
-                        <button id="darkModeToggle" class="btn btn-primary" type="button">Dark</button>
+                    <div class="dark-mode-container">
+                        <button id="darkModeToggle" class="btn btn-primary" type="button" aria-label="Toggle dark mode">
+                            Dark
+                        </button>
                     </div>
-                    
-                    <form class="d-flex justify-content-center" role="search">
-                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+
+                    <!-- Search form -->
+                    <form class="d-flex justify-content-center" role="search" aria-label="Site search">
+                        <!-- Search input field -->
+                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search query">
+                        <!-- Submit button for the search -->
+                        <button class="btn btn-outline-success" type="submit" aria-label="Submit search">Search</button>
                     </form>
                 </div>
             </div>
@@ -77,6 +93,7 @@
                 $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
                 $("#footer").addClass("footer-dark");
                 $("#darkModeToggle").text("Light");
+                $("hr").addClass("seperator"); // Add .separator to all <hr> elements
             }
 
             // Handle button click for dark mode toggle
@@ -96,6 +113,9 @@
                 // Toggle footer-dark class on footer
                 $("#footer").toggleClass("footer-dark");
 
+                // Toggle .separator class on all <hr> elements
+                $("hr").toggleClass("separator");
+
                 // Change the button text between "Dark" and "Light"
                 var buttonText = $("#darkModeToggle").text().trim();
                 if (buttonText === "Dark") {
@@ -110,33 +130,40 @@
     </script>
 
 
-
-
     <main class="container my-4">
+        <!-- Heading for the Contact Us section -->
         <h2 class="text-center mb-4">Contact Us</h2>
-    
+        
+        <!-- Introduction paragraph about the contact form -->
+        <div class="row justify-content-center contact-form">
+            <p class="justify mb-5">
+                We are happy to answer any questions you may have! If you need more information or have any inquiries, feel free to reach out to us by filling out the required information in the form below. Our team will get back to you as soon as possible, and we look forward to assisting you with any concerns or feedback you might have.
+            </p>
+        </div>
+
+        <!-- Contact form for the user to submit their details -->
         <form class="contact-form">
-            <div class="row">
-                <!-- First Name -->
+            <div class="row mb-5">
+
+                <!-- First Name Input Field -->
                 <div class="col-12 col-md-6 col-lg-4 my-2">
                     <label for="firstName">First name:</label>
                     <input type="text" id="firstName" class="form-control" aria-label="First name" required>                    
                 </div>
-                
-                <!-- Last Name -->
+
+                <!-- Last Name Input Field -->
                 <div class="col-12 col-md-6 col-lg-4 my-2">
                     <label for="lastName">Last name:</label>
                     <input type="text" id="lastName" class="form-control" aria-label="Last name" required>
                 </div>
-        
-                <!-- Email -->
+
+                <!-- Email Input Field -->
                 <div class="col-12 col-md-6 col-lg-4 my-2">
                     <label for="email">Email:</label>
                     <input type="email" id="email" class="form-control" aria-label="Email" required>
-
                 </div>
 
-                <!-- Reason for Contacting Dropdown -->
+                <!-- Reason for Contact Dropdown -->
                 <div class="col-12 col-md-6 col-lg-4 my-2">
                     <label for="reasonForContact" class="form-label">Reason for Contacting:</label>
                     <select id="reasonForContact" class="form-control" required>
@@ -149,28 +176,27 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                
 
-                <!-- Subject -->
+                <!-- Subject Input Field -->
                 <div class="col-12 col-md-6 col-lg-4 my-2">
                     <label for="subject" class="form-label">Subject:</label>
                     <input type="text" id="subject" class="form-control" aria-label="Subject" required>
                 </div>
 
-                <!-- Checkbox to Send Email -->
+                <!-- Checkbox to send a copy of the message to the user's email -->
                 <div class="col-12 col-md-6 col-lg-4 my-2 d-flex align-items-center">
                     <input class="form-check-input me-2" type="checkbox" value="" id="sendEmailCheck">
                     <label class="form-check-label" for="sendEmailCheck">
                         Send a copy to my email
                     </label>
                 </div>
-                
-                <!-- Message -->
+
+                <!-- Message Textarea -->
                 <div class="col-12 my-2">
                     <label for="message" class="form-label">Your Message:</label>
                     <textarea id="message" class="form-control" aria-label="Your Message" required rows="8"></textarea>
                 </div>
-            
+
                 <!-- Submit Button -->
                 <div class="row justify-content-center">
                     <div class="col-12 my-3 text-center">
@@ -178,40 +204,38 @@
                     </div>
                 </div>
             </div>
+
+            <hr>
         </form>
 
+        <!-- Section for displaying office location -->
+        <div class="container my-4">
+            <div>
+                <!-- Heading for the Our Offices section -->
+                <h2 class="text-center mb-4 mt-5">Our Offices</h2>
+            </div>
+            <!-- Map displaying the location of the office using an embedded Google Maps iframe -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.7938630997764!2d23.830525976173305!3d38.00526837192831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a199709f059559%3A0xad1dacf4713268b2!2sThe%20American%20College%20of%20Greece!5e0!3m2!1sel!2sgr!4v1739798760850!5m2!1sel!2sgr" 
+                    allowfullscreen 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
     </main>
-    
 
-    <div class="container my-4">
-        <div>
-            <h2 class="text-center mb-4">Our Offices</h2>
-        </div>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.7938630997764!2d23.830525976173305!3d38.00526837192831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a199709f059559%3A0xad1dacf4713268b2!2sThe%20American%20College%20of%20Greece!5e0!3m2!1sel!2sgr!4v1739798760850!5m2!1sel!2sgr" 
-                allowfullscreen 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </div>
-    
         
+    <!-- Footer --> 
+    <footer id="footer" class="text-center text-lg-start text-muted" aria-label="Footer">
 
-
-
-
-    <!-- Footer -->
-    <footer id="footer" class="text-center text-lg-start text-muted">
-  
         <!-- Section: Links  -->
         <section class="">
             <div class="container mt-5">
             <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" aria-label="Legal and Policy Links">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             <i class="fa-solid fa-mountain"></i>&nbsp;&nbsp;North Hiking
@@ -230,7 +254,7 @@
                         </p>
                     </div>
 
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" aria-label="Navigation Links">
                     <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             Navigation
@@ -254,7 +278,7 @@
                     <!-- Grid column -->
 
                     <!-- Social Media Links -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" aria-label="Social Media Links">
                         <!-- Links -->
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Social Media
@@ -275,7 +299,7 @@
                         <!-- Grid column -->
         
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" aria-label="Contact Information">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                         <p><i class="fas fa-home me-3"></i> Athens, 12649, Greece</p>
@@ -290,7 +314,7 @@
                 <!-- Grid row -->
 
                 <!-- Copyright -->
-                <div class="text-center">
+                <div class="text-center" aria-label="Copyright Information">
                     © 2025 Copyright: Panos North
                 </div>
                 <!-- Copyright -->
@@ -298,9 +322,10 @@
 
         </section>
         <!-- Section: Links  -->
-    
+
     </footer>
     <!-- Footer -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
