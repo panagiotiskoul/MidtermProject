@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A brief description of your site">
-    <meta name="author" content="Your Name">
+    <meta name="description" content="A Hiking Trip Booking & Equipement Rental Website">
+    <meta name="author" content="Panos North">
     <title>North Hiking</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
@@ -31,24 +31,31 @@
 
 
     <header>
-        <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
                     <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks">                      
-                        <li class="nav-item flex-fill"> <a class="nav-link" aria-current="page" href="index.html">Home</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" aria-current="page" href="trips.html">Trips</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" aria-current="page" href="tasks.html">Tasks</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link active" aria-current="page" href="about.html">About</a></li>
-                        <li class="nav-item flex-fill"><a class="nav-link" aria-current="page" href="contact.html">Contact</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="trips.html">Trips</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="tasks.html">Tasks</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
+                    
+                    <!-- Dark Mode Toggle Button -->
+                    <div class="dark-mode-container ">
+                        <button id="darkModeToggle" class="btn btn-primary" type="button">Dark</button>
+                    </div>
+                    
                     <form class="d-flex justify-content-center" role="search">
                         <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -57,6 +64,29 @@
             </div>
         </nav>
     </header>
+
+    <!-- Darkmode Script -->
+    <script>
+        $(document).ready(function(){
+            $("#darkModeToggle").click(function(){
+                $("#navbar").toggleClass("navbar-light navbar-dark bg-light bg-dark");
+
+
+                // Toggle background color of the page
+                $("body").toggleClass("dark-background");
+
+                // Toggle text color for paragraphs and headers
+                $("p, h1, h2, h3, h4, h5, h6").toggleClass("light-text");
+
+                $("#welcome").toggleClass("welcome-box-dark welcome-box");
+
+                // Toggle footer-dark class on footer
+                $("#footer").toggleClass("footer-dark");
+
+            });
+        });
+    </script>
+
 
 
     <script>
@@ -186,111 +216,105 @@
     </main>
 
 
-        <!-- Footer -->
-        <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <!-- Footer -->
+    <footer id="footer" class="text-center text-lg-start text-muted">
   
-            <!-- Section: Links  -->
-            <section class="">
-                <div class="container mt-5">
-                <!-- Grid row -->
-                    <div class="row mt-3">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <!-- Content -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                <i class="fa-solid fa-mountain"></i>&nbsp;&nbsp;North Hiking
-                            </h6>
-                            <p>
-                                <a href="#" class="text-reset">FAQ</a>
-                            </p>
-                            <p>
-                                <a href="#" class="text-reset">Privacy Policy</a>
-                            </p>
-                            <p>
-                                <a href="#" class="text-reset">Terms & Conditions</a>
-                            </p>
-                            <p>
-                                <a href="#" class="text-reset">Legal Notice</a>
-                            </p>
-                        </div>
-    
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container mt-5">
+            <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fa-solid fa-mountain"></i>&nbsp;&nbsp;North Hiking
+                        </h6>
+                        <p>
+                            <a href="#" class="text-reset">FAQ</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">Terms & Conditions</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">Legal Notice</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Navigation
+                        </h6>
+                        <p>
+                            <a href="index.html" class="text-reset">Home</a>
+                        </p>
+                        <p>
+                            <a href="trips.html" class="text-reset">Trips</a>
+                        </p>
+                        <p>
+                            <a href="tasks.html" class="text-reset">Tasks</a>
+                        </p>
+                        <p>
+                            <a href="about.html" class="text-reset">About</a>
+                        </p>
+                        <p>
+                            <a href="contact.html" class="text-reset">Contact</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Social Media Links -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                             <h6 class="text-uppercase fw-bold mb-4">
-                                Navigation
+                                Social Media
                             </h6>
                             <p>
-                                <a href="index.html" class="text-reset">Home</a>
+                                <a href="https://www.facebook.com/" class="text-reset">Facebook</a>
+                                <i class="fab fa-facebook-f"></i>
                             </p>
                             <p>
-                                <a href="trips.html" class="text-reset">Trips</a>
+                                <a href="https://www.instagram.com/" class="text-reset">Instagram</a>
+                                <i class="fab fa-instagram"></i>
                             </p>
                             <p>
-                                <a href="tasks.html" class="text-reset">Tasks</a>
-                            </p>
-                            <p>
-                                <a href="shop.html" class="text-reset">Shop</a>
-                            </p>
-                            <p>
-                                <a href="about.html" class="text-reset">About</a>
-                            </p>
-                            <p>
-                                <a href="contact.html" class="text-reset">Contact</a>
+                                <a href="https://www.tiktok.com/" class="text-reset">TikTok</a>
+                                <i class="fab fa-tiktok"></i>
                             </p>
                         </div>
                         <!-- Grid column -->
-    
-                        <!-- Social Media Links -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                                <h6 class="text-uppercase fw-bold mb-4">
-                                    Social Media
-                                </h6>
-                                <p>
-                                    <a href="https://www.facebook.com/" class="text-reset">Facebook</a>
-                                    <i class="fab fa-facebook-f"></i>
-                                </p>
-                                <p>
-                                    <a href="https://www.instagram.com/" class="text-reset">Instagram</a>
-                                    <i class="fab fa-instagram"></i>
-                                </p>
-                                <p>
-                                    <a href="https://www.tiktok.com/" class="text-reset">TikTok</a>
-                                    <i class="fab fa-tiktok"></i>
-                                </p>
-                            </div>
-                            <!-- Grid column -->
-            
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                            <p><i class="fas fa-home me-3"></i> Athens, 12649, Greece</p>
-                            <p>
-                                <i class="fas fa-envelope me-3"></i>
-                                north_hiking@gmail.com
-                            </p>
-                            <p><i class="fas fa-phone me-3"></i> +30 210 810 2994</p>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-                </div>
-            </section>
-            <!-- Section: Links  -->
         
-            <!-- Copyright -->
-            <div class="text-center">
-            <p>© 2025 Copyright: Panos North</p>
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Athens, 12649, Greece</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            north_hiking@gmail.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> +30 210 810 2994</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+
+                <!-- Copyright -->
+                <div class="text-center">
+                    © 2025 Copyright: Panos North
+                </div>
+                <!-- Copyright -->
             </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
 
-
-
-
-
+        </section>
+        <!-- Section: Links  -->
+    
+    </footer>
+    <!-- Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
