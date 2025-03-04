@@ -30,62 +30,85 @@
     </script>
 
 
-<header>
-    <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
-            </a>
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/Site_Logo/logo.png" alt="North Hiking Logo" class="logo-img">
+                </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks">                      
-                    <li class="nav-item flex-fill"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item flex-fill"><a class="nav-link" href="trips.html">Trips</a></li>
-                    <li class="nav-item flex-fill"><a class="nav-link" href="tasks.html">Tasks</a></li>
-                    <li class="nav-item flex-fill"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item flex-fill"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-                
-                <!-- Dark Mode Toggle Button -->
-                <div class="dark-mode-container ">
-                    <button id="darkModeToggle" class="btn btn-primary" type="button">Dark</button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex flex-grow-1 justify-content-between text-center navlinks">                      
+                        <li class="nav-item flex-fill"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="trips.html">Trips</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="tasks.html">Tasks</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link active" href="contact.html">Contact</a></li>
+                    </ul>
+                    
+                    <!-- Dark Mode Toggle Button -->
+                    <div class="dark-mode-container ">
+                        <button id="darkModeToggle" class="btn btn-primary" type="button">Dark</button>
+                    </div>
+                    
+                    <form class="d-flex justify-content-center" role="search">
+                        <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
-                
-                <form class="d-flex justify-content-center" role="search">
-                    <input class="form-control me-2 searchnav" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
-        </div>
-    </nav>
-</header>
-
-<!-- Darkmode Script -->
-<script>
-    $(document).ready(function(){
-        $("#darkModeToggle").click(function(){
-            $("#navbar").toggleClass("navbar-light navbar-dark bg-light bg-dark");
+        </nav>
+    </header>
 
 
-            // Toggle background color of the page
-            $("body").toggleClass("dark-background");
+    <!-- Darkmode Script -->
+    <script>
+        $(document).ready(function(){
+            // Check if dark mode is enabled from localStorage and apply it
+            if(localStorage.getItem("darkMode") === "enabled") {
+                $("body").addClass("dark-background");
+                $("p, h1, h2, h3, h4, h5, h6").addClass("light-text");
+                $("#navbar").addClass("navbar-dark bg-dark").removeClass("navbar-light bg-light");
+                $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
+                $("#footer").addClass("footer-dark");
+                $("#darkModeToggle").text("Light");
+            }
 
-            // Toggle text color for paragraphs and headers
-            $("p, h1, h2, h3, h4, h5, h6").toggleClass("light-text");
+            // Handle button click for dark mode toggle
+            $("#darkModeToggle").click(function(){
+                // Toggle classes for dark mode
+                $("#navbar").toggleClass("navbar-light navbar-dark bg-light bg-dark");
 
-            $("#welcome").toggleClass("welcome-box-dark welcome-box");
+                // Toggle background color of the page
+                $("body").toggleClass("dark-background");
 
-            // Toggle footer-dark class on footer
-            $("#footer").toggleClass("footer-dark");
+                // Toggle text color for paragraphs and headers
+                $("p, h1, h2, h3, h4, h5, h6").toggleClass("light-text");
 
+                // Toggle welcome-box classes for the #welcome div
+                $("#welcome").toggleClass("welcome-box-dark welcome-box");
+
+                // Toggle footer-dark class on footer
+                $("#footer").toggleClass("footer-dark");
+
+                // Change the button text between "Dark" and "Light"
+                var buttonText = $("#darkModeToggle").text().trim();
+                if (buttonText === "Dark") {
+                    $("#darkModeToggle").text("Light");
+                    localStorage.setItem("darkMode", "enabled"); // Save dark mode state
+                } else {
+                    $("#darkModeToggle").text("Dark");
+                    localStorage.setItem("darkMode", "disabled"); // Save dark mode state
+                }
+            });
         });
-    });
-</script>
+    </script>
+
 
 
 
