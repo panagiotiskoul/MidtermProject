@@ -11,31 +11,10 @@
     <link rel="icon" type="image/png" href="images/Site_Logo/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="taskstyles.css"> <!-- Link to external CSS -->
 </head>
 
 
 <body>
-    <!-- Script that Animates the Logo Image of the Navbar -->
-    <script>
-        // Wait for the document to be fully loaded before executing the script
-        $(document).ready(function() {
-            
-            // When the mouse enters the logo image
-            $(".navbar-brand img").hover(
-                function() {
-                    // This function is triggered when the mouse enters the image
-                    $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change the image source to the hover version
-                }, 
-                function() {
-                    // This function is triggered when the mouse leaves the image
-                    $(this).attr("src", "./images/Site_Logo/logo.png"); // Change the image source back to the original version
-                }
-            );
-        });
-    </script>
-
-
     <header>
         <!-- Main navigation bar -->
         <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top" aria-label="Navigation menu">
@@ -82,131 +61,27 @@
         </nav>
     </header>
 
-    <!-- Script that applies Darkmode to the website -->
-    <script>
-        $(document).ready(function(){
-            // Check if dark mode is enabled from localStorage and apply it
-            if(localStorage.getItem("darkMode") === "enabled") {
-                $("body").addClass("dark-background");
-                $("p, h1, h2, h3, h4, h5, h6").addClass("light-text");
-                $("#navbar").addClass("navbar-dark bg-dark").removeClass("navbar-light bg-light");
-                $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
-                $("#footer").addClass("footer-dark");
-                $("#darkModeToggle").text("Light");
-                $("hr").addClass("seperator"); // Add .separator to all <hr> elements
-                $(".contact-form label").css("color", "white");
-                $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                    "background-color": "#333840", // Dark gray background
-                    "color": "white" // White text color
-                });
-                $(".contact-form select option").css("color", "white"); // White text in select options
-                $(".taskfields label").css("color", "white");
-                $(".taskfields input, .taskfields select").css({
-                    "background-color": "#333840", // Dark gray background
-                    "color": "white" // White text color
-                });
-                $(".taskfields select option").css("color", "white"); // White text in select options
-            }
-
-            // Handle button click for dark mode toggle
-            $("#darkModeToggle").click(function(){
-                // Toggle classes for dark mode
-                $("#navbar").toggleClass("navbar-light navbar-dark bg-light bg-dark");
-
-                // Toggle background color of the page
-                $("body").toggleClass("dark-background");
-
-                // Toggle text color for paragraphs and headers
-                $("p, h1, h2, h3, h4, h5, h6").toggleClass("light-text");
-
-                // Toggle welcome-box classes for the #welcome div
-                $("#welcome").toggleClass("welcome-box-dark welcome-box");
-
-                // Toggle footer-dark class on footer
-                $("#footer").toggleClass("footer-dark");
-
-                // Toggle .separator class on all <hr> elements
-                $("hr").toggleClass("separator");
-
-                // CToggle Dark Mode for the Contact Form Labels
-                // Check the color of the first label
-                var currentColor = $(".contact-form label").first().css("color");
-                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
-                if (currentColor === "rgb(33, 37, 41)") {
-                    $(".contact-form label").css("color", "white");
-                } else if (currentColor === "rgb(255, 255, 255)") {
-                    $(".contact-form label").css("color", "rgb(33, 37, 41)");
-                }
-
-                // Toggle Dark Mode for the contact form fields
-                var currentfieldColor = $(".contact-form input").first().css("background-color");
-                if (currentfieldColor === "rgb(255, 255, 255)") { 
-                    $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                        "background-color": "#333840", // Dark gray background
-                        "color": "white" // White text color
-                    });
-                    $(".contact-form select option").css("color", "white"); // White text in select options
-                } else {
-                    $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                        "background-color": "white", // Light background
-                        "color": "rgb(33, 37, 41)" // Dark text color
-                    });
-                    $(".contact-form select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
-                }
-
-                // CToggle Dark Mode for the Contact Form Labels
-                // Check the color of the first label
-                var taskfieldColor = $(".taskfields label").first().css("color");
-                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
-                if (taskfieldColor === "rgb(33, 37, 41)") {
-                    $(".taskfields label").css("color", "white");
-                } else if (taskfieldColor === "rgb(255, 255, 255)") {
-                    $(".taskfields label").css("color", "rgb(33, 37, 41)");
-                }
-
-                // Toggle Dark Mode for the contact form fields
-                var currentfieldtaskColor = $(".taskfields input").first().css("background-color");
-                if (currentfieldtaskColor === "rgb(255, 255, 255)") { 
-                    $(".taskfields input, .taskfields select").css({
-                        "background-color": "#333840", // Dark gray background
-                        "color": "white" // White text color
-                    });
-                    $(".taskfields select option").css("color", "white"); // White text in select options
-                } else {
-                    $(".taskfields input, .taskfields select").css({
-                        "background-color": "white", // Light background
-                        "color": "rgb(33, 37, 41)" // Dark text color
-                    });
-                    $(".taskfields select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
-                }
-
-                // Change the button text between "Dark" and "Light"
-                var buttonText = $("#darkModeToggle").text().trim();
-                if (buttonText === "Dark") {
-                    $("#darkModeToggle").text("Light");
-                    localStorage.setItem("darkMode", "enabled"); // Save dark mode state
-                } else {
-                    $("#darkModeToggle").text("Dark");
-                    localStorage.setItem("darkMode", "disabled"); // Save dark mode state
-                }
-            });
-        });
-    </script>
-    
-
 
     <div class="itemsmargins">
         <main class="container mt-4">
             <!-- Form for adding items -->
             <div class="form-container">
                 <!-- Heading for the form -->
-                <h2 class="text-center" id="formHeading">Create your Checklist</h2>
-                <form class="taskfields" id="itemForm" aria-labelledby="formHeading">
+                <h2 class="text-center normal_title" id="formHeading">Create your Checklist</h2>
+                <div class="row justify-content-center">
+                    <p class="justify">
+                        The Create Your Checklist feature helps you organize and prepare for your hiking trip by allowing you to build a personalized checklist of essential gear. You can select the trip date, specify the type of item, set its quantity, assign a priority level (High, Medium, or Low), and add a description for each item. Once your list is created, you can easily manage it by marking items as completed and filtering them based on priority or completion status, ensuring you stay organized and ready for your adventure.
+                    </p>
+                </div>
+
+                <hr>
+
+                <form class="taskfields mt-5" id="itemForm" aria-labelledby="formHeading">
         
                     <div class="row">
                         <!-- Trip Date input field (selected once) -->
                         <div class="col-md-6 mb-3">
-                            <label for="tripDate" class="form-label" aria-label="Select Trip Date">Select Trip Date:</label>
+                            <label for="tripDate" class="form-label" aria-label="Select Trip Date">Trip Date:</label>
                             <input type="date" id="tripDate" name="tripDate" class="form-control" required aria-required="true">
                         </div>
                     </div>
@@ -240,52 +115,65 @@
                             <label for="itemDesc" aria-label="Enter item description">Description:</label>
                             <input type="text" id="itemDesc" name="itemDesc" class="form-control" required aria-required="true" aria-placeholder="Enter a description for the item">
                         </div>
-                    </div><br>
+                    </div>
         
                     <!-- Buttons to add or update items -->
                     <div class="row justify-content-center button-container">
-                        <div class="col-12 my-2 text-center">
-                            <button type="button" id="addItemBtn" class="greenbutton btn btn-primary" aria-label="Add item to the list">Add Item</button>
+                        <div class="col-12 my-3 text-center">
+                            <button type="button" id="addItemBtn" class="greenbutton btn" aria-label="Add item to the list">Add Item</button>
                             <button type="button" id="updateItemBtn" class="greenbutton btn btn-warning" style="display:none;" aria-label="Update selected item">Update Item</button>
                         </div>
                     </div>
                 </form>
-        
             </div>
+
+
+            <!-- Section that displays the list of items -->
             <div style="overflow-x: auto; ">
-            <!-- Section to display the list of items -->
-            <table class="previewtable table items mt-5" aria-labelledby="itemListHeading">
-                <thead>
-                    <!-- Table headers for item details -->
-                    <tr>
-                        <th scope="col" aria-label="Mark item as complete">Complete</th>
-                        <th scope="col" aria-label="Item name">Item Name</th>
-                        <th scope="col" aria-label="Item description">Description</th>
-                        <th scope="col" aria-label="Trip date">Trip Date</th>
-                        <th scope="col" aria-label="Quantity of items">Quantity</th>
-                        <th scope="col" aria-label="Priority level of item">Priority</th>
-                        <th scope="col" aria-label="Actions for item">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="itemTable">
-                    <!-- New rows with item data will be added dynamically here -->
-                </tbody>
-            </table>
+                <table class="previewtable table items mt-5" aria-labelledby="itemListHeading">
+                    <thead>
+                        <!-- Table headers for item details -->
+                        <tr>
+                            <th scope="col" aria-label="Mark item as complete">Complete</th>
+                            <th scope="col" aria-label="Item name">Item Name</th>
+                            <th scope="col" aria-label="Item description">Description</th>
+                            <th scope="col" aria-label="Trip date">Trip Date</th>
+                            <th scope="col" aria-label="Quantity of items">Quantity</th>
+                            <th scope="col" aria-label="Priority level of item">Priority</th>
+                            <th scope="col" aria-label="Actions for item">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemTable">
+                        <!-- New rows with item data will are added dynamically here -->
+                    </tbody>
+                </table>
             </div>
 
 
-
-
-            <div class="d-flex justify-content-center">
-                <button id="filterAll" class="btn btn-secondary">All</button>
-                <button id="filterHigh" class="btn btn-danger">High Priority</button>
-                <button id="filterMedium" class="btn btn-warning">Medium Priority</button>
-                <button id="filterLow" class="btn btn-success">Low Priority</button>
-                <button id="filterCompleted" class="btn btn-primary">Completed</button>
-                <button id="filterPending" class="btn btn-info text-white">Pending</button>
+            <!-- Creates buttons for filtering the table -->
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2 d-flex justify-content-center">
+                        <button id="filterAll" class="fixed-button btn btn-secondary w-100 fixed-size-btn">All</button>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2 d-flex justify-content-center">
+                        <button id="filterHigh" class="fixed-button btn btn-danger w-100 fixed-size-btn">High Priority</button>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2 d-flex justify-content-center">
+                        <button id="filterMedium" class="fixed-button btn btn-warning w-100 text-white fixed-size-btn">Medium Priority</button>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2 d-flex justify-content-center">
+                        <button id="filterLow" class="fixed-button btn btn-success w-100 fixed-size-btn">Low Priority</button>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2 d-flex justify-content-center">
+                        <button id="filterCompleted" class="fixed-button btn btn-primary w-100 fixed-size-btn">Completed</button>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
+                        <button id="filterPending" class="fixed-button btn btn-info text-white w-100 fixed-size-btn">Pending</button>
+                    </div>
+                </div>
             </div>
-
-
+            
 
             <!-- Section for displaying an overview of item status -->
             <h3 id="statusOverviewHeading" class="text-center mt-5" aria-label="Item Status Overview">Checklist Overview</h3>
@@ -313,316 +201,12 @@
                     </tr>
                 </tbody>
             </table>
-
-
-            <script>
-                $(document).ready(function () {
-                    var selectedTripDate = ""; // Variable to store selected Trip Date
-                    var selectedRow = null; // To keep track of the selected row for editing
-                    var packedItemsCount = 0; // Track the number of packed items
-                    var pendingItemsCount = 0; // Track the number of pending items
-                    
-                    // Load the saved table rows from localStorage when the page loads
-                    loadTableRowsFromLocalStorage();
-                    
-                    // Listen for Trip Date selection
-                    $("#tripDate").change(function() {
-                        selectedTripDate = $(this).val(); // Store the selected trip date
-                    });
-
-                    // Add Item Button
-                    $("#addItemBtn").click(function () {
-                        var itemName = $("#itemName").val();
-                        var itemDesc = $("#itemDesc").val();
-                        var quantity = $("#quantity").val();
-                        var priority = $("#priority").val();
-                        var tripDate = selectedTripDate;
-
-                        // Validate if all fields are filled
-                        if (itemName && itemDesc && tripDate && quantity && priority) {
-                            var rowClass = "";
-                            if (priority === "High") {
-                                rowClass = "table-danger"; // Red for high priority
-                            } else if (priority === "Medium") {
-                                rowClass = "table-warning"; // Yellow for medium priority
-                            } else if (priority === "Low") {
-                                rowClass = "table-success"; // Green for low priority
-                            }
-
-                            pendingItemsCount++; // Increment pending items count
-
-                            // Create a new row with a checkbox to mark as completed
-                            var newRow = {
-                                itemName: itemName,
-                                itemDesc: itemDesc,
-                                quantity: quantity,
-                                priority: priority,
-                                tripDate: tripDate,
-                                isCompleted: false
-                            };
-
-                            // Add the new row to localStorage
-                            saveRowToLocalStorage(newRow);
-
-                            // Append the new row to the table
-                            appendRowToTable(newRow);
-
-                            // Clear the form fields, but keep the trip date
-                            $("#itemForm")[0].reset();
-                            $("#tripDate").val(selectedTripDate);
-
-                            // Update the counts after adding an item
-                            updateItemCounts();
-                        } else {
-                            alert("Please fill in all the fields.");
-                        }
-                    });
-
-                    // Edit Item Button
-                    $(document).on("click", ".editBtn", function() {
-                        selectedRow = $(this).closest("tr");
-
-                        // Populate the form with the current row's data
-                        $("#itemName").val(selectedRow.find("td:eq(1)").text());
-                        $("#itemDesc").val(selectedRow.find("td:eq(2)").text());
-                        $("#quantity").val(selectedRow.find("td:eq(4)").text());
-                        $("#priority").val(selectedRow.find("td:eq(5)").text());
-                        $("#tripDate").val(selectedRow.find("td:eq(3)").text());
-
-                        // Change the Add button to Update button
-                        $("#addItemBtn").hide();
-                        $("#updateItemBtn").show();
-                    });
-
-                    // Update Item Button (Handles Update)
-                    $("#updateItemBtn").click(function() {
-                        var itemName = $("#itemName").val();
-                        var itemDesc = $("#itemDesc").val();
-                        var quantity = $("#quantity").val();
-                        var priority = $("#priority").val();
-                        var tripDate = $("#tripDate").val();
-
-                        if (selectedRow) {
-                            selectedRow.find("td:eq(1)").text(itemName);
-                            selectedRow.find("td:eq(2)").text(itemDesc);
-                            selectedRow.find("td:eq(3)").text(tripDate);
-                            selectedRow.find("td:eq(4)").text(quantity);
-                            selectedRow.find("td:eq(5)").text(priority);
-
-                            var rowClass = "";
-                            if (priority === "High") {
-                                rowClass = "table-danger";
-                            } else if (priority === "Medium") {
-                                rowClass = "table-warning";
-                            } else if (priority === "Low") {
-                                rowClass = "table-success";
-                            }
-
-                            selectedRow.removeClass("table-danger table-warning table-success");
-                            selectedRow.addClass(rowClass);
-
-                            // Update the row in localStorage
-                            updateRowInLocalStorage(selectedRow, itemName, itemDesc, quantity, priority, tripDate);
-
-                            $("#updateItemBtn").hide();
-                            $("#addItemBtn").show();
-
-                            $("#itemForm")[0].reset();
-                            $("#tripDate").val(selectedTripDate);
-
-                            updateItemCounts();
-                        } else {
-                            alert("Please select an item to update.");
-                        }
-                    });
-
-                    // Delete Item Button
-                    $(document).on("click", ".deleteBtn", function() {
-                        var row = $(this).closest("tr");
-                        var isCompleted = row.hasClass("table-success");
-
-                        if (isCompleted) {
-                            packedItemsCount--; // Decrement packed items count
-                        } else {
-                            pendingItemsCount--; // Decrement pending items count
-                        }
-
-                        row.remove(); // Remove the item row
-                        deleteRowFromLocalStorage(row); // Delete the row from localStorage
-                        updateItemCounts(); // Update the counts
-                    });
-
-                    // Track completion status of the tasks
-                    $(document).on("change", ".completeCheckbox", function() {
-                        var isCompleted = $(this).prop("checked");
-                        var row = $(this).closest("tr");
-
-                        if (isCompleted) {
-                            row.addClass("table-success");
-                            packedItemsCount++; // Increment packed items count
-                            pendingItemsCount--; // Decrement pending items count
-                        } else {
-                            row.removeClass("table-success");
-                            packedItemsCount--; // Decrement packed items count
-                            pendingItemsCount++; // Increment pending items count
-                        }
-
-                        // Update the row status in localStorage
-                        updateRowStatusInLocalStorage(row, isCompleted);
-
-                        // Update the counts after completion status change
-                        updateItemCounts();
-                    });
-
-
-                    // Filter by Priority
-                    $("#filterHigh").click(function () {
-                        filterTableByPriority("High");
-                    });
-
-                    $("#filterMedium").click(function () {
-                        filterTableByPriority("Medium");
-                    });
-
-                    $("#filterLow").click(function () {
-                        filterTableByPriority("Low");
-                    });
-
-                    // Filter by Completion Status
-                    $("#filterCompleted").click(function () {
-                        filterTableByCompletion(true);
-                    });
-
-                    $("#filterPending").click(function () {
-                        filterTableByCompletion(false);
-                    });
-
-                    // Filter by All (Show all rows)
-                    $("#filterAll").click(function () {
-                        $("#itemTable tr").show();
-                    });
-
-                    // Function to filter table by priority
-                    function filterTableByPriority(priority) {
-                        $("#itemTable tr").each(function () {
-                            var rowPriority = $(this).find("td:eq(5)").text();
-                            if (rowPriority === priority) {
-                                $(this).show();
-                            } else {
-                                $(this).hide();
-                            }
-                        });
-                    }
-
-                    // Function to filter table by completion status
-                    function filterTableByCompletion(isCompleted) {
-                        $("#itemTable tr").each(function () {
-                            var checkbox = $(this).find(".completeCheckbox");
-                            if (checkbox.prop("checked") === isCompleted) {
-                                $(this).show();
-                            } else {
-                                $(this).hide();
-                            }
-                        });
-                    }
-
-                    // Function to update the counts (Packed, Pending, Total)
-                    function updateItemCounts() {
-                        var totalItemsCount = packedItemsCount + pendingItemsCount;
-
-                        // Update the table with the current counts
-                        $("#packedCount").text(packedItemsCount);
-                        $("#pendingCount").text(pendingItemsCount);
-                        $("#totalCount").text(totalItemsCount);
-                    }
-                    
-                    // Function to append row to table
-                    function appendRowToTable(rowData) {
-                        var rowClass = "";
-                        if (rowData.priority === "High") {
-                            rowClass = "table-danger";
-                        } else if (rowData.priority === "Medium") {
-                            rowClass = "table-warning";
-                        } else if (rowData.priority === "Low") {
-                            rowClass = "table-success";
-                        }
-
-                        var newRow = `<tr class="${rowClass}">
-                            <td><input type="checkbox" class="completeCheckbox" ${rowData.isCompleted ? "checked" : ""}></td>
-                            <td>${rowData.itemName}</td>
-                            <td>${rowData.itemDesc}</td>
-                            <td>${rowData.tripDate}</td>
-                            <td>${rowData.quantity}</td>
-                            <td>${rowData.priority}</td>
-                            <td><button class="greenbutton btn editBtn">Edit</button> 
-                                <button class="lightgreenbutton btn deleteBtn">Delete</button>
-                            </td>
-                        </tr>`;
-
-                        $("#itemTable").append(newRow);
-                    }
-
-                    // Function to save a row to localStorage
-                    function saveRowToLocalStorage(rowData) {
-                        var rows = JSON.parse(localStorage.getItem("itemRows")) || [];
-                        rows.push(rowData);
-                        localStorage.setItem("itemRows", JSON.stringify(rows));
-                    }
-
-                    // Function to load rows from localStorage
-                    function loadTableRowsFromLocalStorage() {
-                        var rows = JSON.parse(localStorage.getItem("itemRows")) || [];
-                        rows.forEach(function(rowData) {
-                            appendRowToTable(rowData);
-                            if (rowData.isCompleted) {
-                                packedItemsCount++;
-                            } else {
-                                pendingItemsCount++;
-                            }
-                        });
-                        updateItemCounts();
-                    }
-
-                    // Function to update a row in localStorage
-                    function updateRowInLocalStorage(rowElement, itemName, itemDesc, quantity, priority, tripDate) {
-                        var rows = JSON.parse(localStorage.getItem("itemRows")) || [];
-                        var rowIndex = rowElement.index();
-                        var updatedRow = {
-                            itemName: itemName,
-                            itemDesc: itemDesc,
-                            quantity: quantity,
-                            priority: priority,
-                            tripDate: tripDate,
-                            isCompleted: rowElement.find("input.completeCheckbox").prop("checked")
-                        };
-                        rows[rowIndex] = updatedRow;
-                        localStorage.setItem("itemRows", JSON.stringify(rows));
-                    }
-
-                    // Function to delete a row from localStorage
-                    function deleteRowFromLocalStorage(rowElement) {
-                        var rows = JSON.parse(localStorage.getItem("itemRows")) || [];
-                        var rowIndex = rowElement.index();
-                        rows.splice(rowIndex, 1);
-                        localStorage.setItem("itemRows", JSON.stringify(rows));
-                    }
-
-                    // Function to update row completion status in localStorage
-                    function updateRowStatusInLocalStorage(rowElement, isCompleted) {
-                        var rows = JSON.parse(localStorage.getItem("itemRows")) || [];
-                        var rowIndex = rowElement.index();
-                        rows[rowIndex].isCompleted = isCompleted;
-                        localStorage.setItem("itemRows", JSON.stringify(rows));
-                    }
-                });
-            </script>
         </main>
     </div>
     
     
     <!-- Footer --> 
     <footer id="footer" class="text-center text-lg-start text-muted" aria-label="Footer">
-
         <!-- Section: Links  -->
         <section class="">
             <div class="container mt-5">
@@ -717,6 +301,15 @@
         <!-- Section: Links  -->
     </footer>
     <!-- Footer -->
+
+    <!-- Script that creates the tasks table (checklist) and performs all related functions (edit, delete, filter)  -->
+    <script src="scripts/create_tasks_table.js"></script>
+
+    <!-- Script that Animates the Logo Image of the Navbar -->
+    <script src="scripts/nav_logo_animation.js"></script>
+
+    <!-- Script that applies Darkmode to the website -->
+    <script src="./scripts/darkmode.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

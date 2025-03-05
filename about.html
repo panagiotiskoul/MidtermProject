@@ -15,26 +15,6 @@
 
 
 <body>
-    <!-- Script that Animates the Logo Image of the Navbar -->
-    <script>
-        // Wait for the document to be fully loaded before executing the script
-        $(document).ready(function() {
-            
-            // When the mouse enters the logo image
-            $(".navbar-brand img").hover(
-                function() {
-                    // This function is triggered when the mouse enters the image
-                    $(this).attr("src", "./images/Site_Logo/logo-hover.png"); // Change the image source to the hover version
-                }, 
-                function() {
-                    // This function is triggered when the mouse leaves the image
-                    $(this).attr("src", "./images/Site_Logo/logo.png"); // Change the image source back to the original version
-                }
-            );
-        });
-    </script>
-
-
     <header>
         <!-- Main navigation bar -->
         <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light sticky-top" aria-label="Navigation menu">
@@ -80,169 +60,6 @@
             </div>
         </nav>
     </header>
-
-
-    <!-- Script that applies Darkmode to the website -->
-    <script>
-        $(document).ready(function(){
-            // Check if dark mode is enabled from localStorage and apply it
-            if(localStorage.getItem("darkMode") === "enabled") {
-                $("body").addClass("dark-background");
-                $("p, h1, h2, h3, h4, h5, h6").addClass("light-text");
-                $("#navbar").addClass("navbar-dark bg-dark").removeClass("navbar-light bg-light");
-                $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
-                $("#footer").addClass("footer-dark");
-                $("#darkModeToggle").text("Light");
-                $("hr").addClass("seperator"); // Add .separator to all <hr> elements
-                $(".contact-form label").css("color", "white");
-                $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                    "background-color": "#333840", // Dark gray background
-                    "color": "white" // White text color
-                });
-                $(".contact-form select option").css("color", "white"); // White text in select options
-                $(".taskfields label").css("color", "white");
-                $(".taskfields input, .taskfields select").css({
-                    "background-color": "#333840", // Dark gray background
-                    "color": "white" // White text color
-                });
-                $(".taskfields select option").css("color", "white"); // White text in select options
-            }
-
-            // Handle button click for dark mode toggle
-            $("#darkModeToggle").click(function(){
-                // Toggle classes for dark mode
-                $("#navbar").toggleClass("navbar-light navbar-dark bg-light bg-dark");
-
-                // Toggle background color of the page
-                $("body").toggleClass("dark-background");
-
-                // Toggle text color for paragraphs and headers
-                $("p, h1, h2, h3, h4, h5, h6").toggleClass("light-text");
-
-                // Toggle welcome-box classes for the #welcome div
-                $("#welcome").toggleClass("welcome-box-dark welcome-box");
-
-                // Toggle footer-dark class on footer
-                $("#footer").toggleClass("footer-dark");
-
-                // Toggle .separator class on all <hr> elements
-                $("hr").toggleClass("separator");
-
-                // CToggle Dark Mode for the Contact Form Labels
-                // Check the color of the first label
-                var currentColor = $(".contact-form label").first().css("color");
-                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
-                if (currentColor === "rgb(33, 37, 41)") {
-                    $(".contact-form label").css("color", "white");
-                } else if (currentColor === "rgb(255, 255, 255)") {
-                    $(".contact-form label").css("color", "rgb(33, 37, 41)");
-                }
-
-                // Toggle Dark Mode for the contact form fields
-                var currentfieldColor = $(".contact-form input").first().css("background-color");
-                if (currentfieldColor === "rgb(255, 255, 255)") { 
-                    $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                        "background-color": "#333840", // Dark gray background
-                        "color": "white" // White text color
-                    });
-                    $(".contact-form select option").css("color", "white"); // White text in select options
-                } else {
-                    $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                        "background-color": "white", // Light background
-                        "color": "rgb(33, 37, 41)" // Dark text color
-                    });
-                    $(".contact-form select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
-                }
-
-                // CToggle Dark Mode for the Contact Form Labels
-                // Check the color of the first label
-                var taskfieldColor = $(".taskfields label").first().css("color");
-                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
-                if (taskfieldColor === "rgb(33, 37, 41)") {
-                    $(".taskfields label").css("color", "white");
-                } else if (taskfieldColor === "rgb(255, 255, 255)") {
-                    $(".taskfields label").css("color", "rgb(33, 37, 41)");
-                }
-
-                // Toggle Dark Mode for the contact form fields
-                var currentfieldtaskColor = $(".taskfields input").first().css("background-color");
-                if (currentfieldtaskColor === "rgb(255, 255, 255)") { 
-                    $(".taskfields input, .taskfields select").css({
-                        "background-color": "#333840", // Dark gray background
-                        "color": "white" // White text color
-                    });
-                    $(".taskfields select option").css("color", "white"); // White text in select options
-                } else {
-                    $(".taskfields input, .taskfields select").css({
-                        "background-color": "white", // Light background
-                        "color": "rgb(33, 37, 41)" // Dark text color
-                    });
-                    $(".taskfields select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
-                }
-
-                // Change the button text between "Dark" and "Light"
-                var buttonText = $("#darkModeToggle").text().trim();
-                if (buttonText === "Dark") {
-                    $("#darkModeToggle").text("Light");
-                    localStorage.setItem("darkMode", "enabled"); // Save dark mode state
-                } else {
-                    $("#darkModeToggle").text("Dark");
-                    localStorage.setItem("darkMode", "disabled"); // Save dark mode state
-                }
-            });
-        });
-    </script>
-
-
-    <script>
-        $(document).ready(function() {
-            // When mouse enters the member image
-            $(".panos-img img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/PanosBNW.jpg"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/Panos.jpg"); // Change back to original image
-                    }
-                );
-        });
-    
-        $(document).ready(function() {
-            // When mouse enters the member image
-            $(".andreas-img img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/AndreasBNW.jpg"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/Andreas.jpg"); // Change back to original image
-                    }
-                );
-        });
-
-        $(document).ready(function() {
-            // When mouse enters the member image
-            $(".pandelis-img img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/PandelisBNW.jpg"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/Pandelis.jpg"); // Change back to original image
-                    }
-                );
-        });
-
-        $(document).ready(function() {
-            // When mouse enters the member image
-            $(".nikolas-img img").hover(
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/NikolasBNW.jpg"); // Change to hover image
-                    }, 
-                    function() {
-                        $(this).attr("src", "./images/Our_Team/Nikolas.jpg"); // Change back to original image
-                    }
-                );
-        });
-    </script>
 
 
     <main>
@@ -338,11 +155,8 @@
     </main>
 
 
-
-
     <!-- Footer --> 
     <footer id="footer" class="text-center text-lg-start text-muted" aria-label="Footer">
-
         <!-- Section: Links  -->
         <section class="">
             <div class="container mt-5">
@@ -433,13 +247,19 @@
                 </div>
                 <!-- Copyright -->
             </div>
-
         </section>
         <!-- Section: Links  -->
-
     </footer>
     <!-- Footer -->
 
+    <!-- Script that makes images black and white when mouse hovers over them -->
+    <script src="scripts/black_white_hover.js"></script>
+
+    <!-- Script that Animates the Logo Image of the Navbar -->
+    <script src="scripts/nav_logo_animation.js"></script>
+
+    <!-- Script that applies Darkmode to the website -->
+    <script src="./scripts/darkmode.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
