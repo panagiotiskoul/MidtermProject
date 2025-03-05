@@ -64,7 +64,7 @@
 
                     <!-- Dark Mode Toggle Button -->
                     <div class="dark-mode-container">
-                        <button id="darkModeToggle" class="btn btn-primary" type="button" aria-label="Toggle dark mode">
+                        <button id="darkModeToggle" class="greenbutton btn" type="button" aria-label="Toggle dark mode">
                             Dark
                         </button>
                     </div>
@@ -96,10 +96,16 @@
                 $("hr").addClass("seperator"); // Add .separator to all <hr> elements
                 $(".contact-form label").css("color", "white");
                 $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                        "background-color": "#333840", // Dark gray background
-                        "color": "white" // White text color
-                    });
-                    $(".contact-form select option").css("color", "white"); // White text in select options
+                    "background-color": "#333840", // Dark gray background
+                    "color": "white" // White text color
+                });
+                $(".contact-form select option").css("color", "white"); // White text in select options
+                $(".taskfields label").css("color", "white");
+                $(".taskfields input, .taskfields select").css({
+                    "background-color": "#333840", // Dark gray background
+                    "color": "white" // White text color
+                });
+                $(".taskfields select option").css("color", "white"); // White text in select options
             }
 
             // Handle button click for dark mode toggle
@@ -122,7 +128,6 @@
                 // Toggle .separator class on all <hr> elements
                 $("hr").toggleClass("separator");
 
-
                 // CToggle Dark Mode for the Contact Form Labels
                 // Check the color of the first label
                 var currentColor = $(".contact-form label").first().css("color");
@@ -133,9 +138,8 @@
                     $(".contact-form label").css("color", "rgb(33, 37, 41)");
                 }
 
-
                 // Toggle Dark Mode for the contact form fields
-                var currentfieldColor = $(".contact-form textarea").first().css("background-color");
+                var currentfieldColor = $(".contact-form input").first().css("background-color");
                 if (currentfieldColor === "rgb(255, 255, 255)") { 
                     $(".contact-form textarea, .contact-form input, .contact-form select").css({
                         "background-color": "#333840", // Dark gray background
@@ -150,6 +154,31 @@
                     $(".contact-form select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
                 }
 
+                // CToggle Dark Mode for the Contact Form Labels
+                // Check the color of the first label
+                var taskfieldColor = $(".taskfields label").first().css("color");
+                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
+                if (taskfieldColor === "rgb(33, 37, 41)") {
+                    $(".taskfields label").css("color", "white");
+                } else if (taskfieldColor === "rgb(255, 255, 255)") {
+                    $(".taskfields label").css("color", "rgb(33, 37, 41)");
+                }
+
+                // Toggle Dark Mode for the contact form fields
+                var currentfieldtaskColor = $(".taskfields input").first().css("background-color");
+                if (currentfieldtaskColor === "rgb(255, 255, 255)") { 
+                    $(".taskfields input, .taskfields select").css({
+                        "background-color": "#333840", // Dark gray background
+                        "color": "white" // White text color
+                    });
+                    $(".taskfields select option").css("color", "white"); // White text in select options
+                } else {
+                    $(".taskfields input, .taskfields select").css({
+                        "background-color": "white", // Light background
+                        "color": "rgb(33, 37, 41)" // Dark text color
+                    });
+                    $(".taskfields select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
+                }
 
                 // Change the button text between "Dark" and "Light"
                 var buttonText = $("#darkModeToggle").text().trim();
@@ -235,7 +264,7 @@
                 <!-- Submit Button -->
                 <div class="row justify-content-center">
                     <div class="col-12 my-3 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="greenbutton btn">Submit</button>
                     </div>
                 </div>
             </div>

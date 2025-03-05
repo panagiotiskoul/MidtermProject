@@ -65,7 +65,7 @@
 
                     <!-- Dark Mode Toggle Button -->
                     <div class="dark-mode-container">
-                        <button id="darkModeToggle" class="btn btn-primary" type="button" aria-label="Toggle dark mode">
+                        <button id="darkModeToggle" class="greenbutton btn" type="button" aria-label="Toggle dark mode">
                             Dark
                         </button>
                     </div>
@@ -96,10 +96,16 @@
                 $("hr").addClass("seperator"); // Add .separator to all <hr> elements
                 $(".contact-form label").css("color", "white");
                 $(".contact-form textarea, .contact-form input, .contact-form select").css({
-                        "background-color": "#333840", // Dark gray background
-                        "color": "white" // White text color
-                    });
-                    $(".contact-form select option").css("color", "white"); // White text in select options
+                    "background-color": "#333840", // Dark gray background
+                    "color": "white" // White text color
+                });
+                $(".contact-form select option").css("color", "white"); // White text in select options
+                $(".taskfields label").css("color", "white");
+                $(".taskfields input, .taskfields select").css({
+                    "background-color": "#333840", // Dark gray background
+                    "color": "white" // White text color
+                });
+                $(".taskfields select option").css("color", "white"); // White text in select options
             }
 
             // Handle button click for dark mode toggle
@@ -122,7 +128,6 @@
                 // Toggle .separator class on all <hr> elements
                 $("hr").toggleClass("separator");
 
-
                 // CToggle Dark Mode for the Contact Form Labels
                 // Check the color of the first label
                 var currentColor = $(".contact-form label").first().css("color");
@@ -133,9 +138,8 @@
                     $(".contact-form label").css("color", "rgb(33, 37, 41)");
                 }
 
-
                 // Toggle Dark Mode for the contact form fields
-                var currentfieldColor = $(".contact-form textarea").first().css("background-color");
+                var currentfieldColor = $(".contact-form input").first().css("background-color");
                 if (currentfieldColor === "rgb(255, 255, 255)") { 
                     $(".contact-form textarea, .contact-form input, .contact-form select").css({
                         "background-color": "#333840", // Dark gray background
@@ -150,6 +154,31 @@
                     $(".contact-form select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
                 }
 
+                // CToggle Dark Mode for the Contact Form Labels
+                // Check the color of the first label
+                var taskfieldColor = $(".taskfields label").first().css("color");
+                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
+                if (taskfieldColor === "rgb(33, 37, 41)") {
+                    $(".taskfields label").css("color", "white");
+                } else if (taskfieldColor === "rgb(255, 255, 255)") {
+                    $(".taskfields label").css("color", "rgb(33, 37, 41)");
+                }
+
+                // Toggle Dark Mode for the contact form fields
+                var currentfieldtaskColor = $(".taskfields input").first().css("background-color");
+                if (currentfieldtaskColor === "rgb(255, 255, 255)") { 
+                    $(".taskfields input, .taskfields select").css({
+                        "background-color": "#333840", // Dark gray background
+                        "color": "white" // White text color
+                    });
+                    $(".taskfields select option").css("color", "white"); // White text in select options
+                } else {
+                    $(".taskfields input, .taskfields select").css({
+                        "background-color": "white", // Light background
+                        "color": "rgb(33, 37, 41)" // Dark text color
+                    });
+                    $(".taskfields select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
+                }
 
                 // Change the button text between "Dark" and "Light"
                 var buttonText = $("#darkModeToggle").text().trim();
@@ -172,7 +201,7 @@
             <div class="form-container">
                 <!-- Heading for the form -->
                 <h2 class="text-center" id="formHeading">Create your Checklist</h2>
-                <form id="itemForm" aria-labelledby="formHeading">
+                <form class="taskfields" id="itemForm" aria-labelledby="formHeading">
         
                     <div class="row">
                         <!-- Trip Date input field (selected once) -->
@@ -214,14 +243,18 @@
                     </div><br>
         
                     <!-- Buttons to add or update items -->
-                    <button type="button" id="addItemBtn" class="btn btn-primary" aria-label="Add item to the list">Add Item</button>
-                    <button type="button" id="updateItemBtn" class="btn btn-warning" style="display:none;" aria-label="Update selected item">Update Item</button>
+                    <div class="row justify-content-center button-container">
+                        <div class="col-12 my-2 text-center">
+                            <button type="button" id="addItemBtn" class="greenbutton btn btn-primary" aria-label="Add item to the list">Add Item</button>
+                            <button type="button" id="updateItemBtn" class="greenbutton btn btn-warning" style="display:none;" aria-label="Update selected item">Update Item</button>
+                        </div>
+                    </div>
                 </form>
-            </div>
         
+            </div>
+            <div style="overflow-x: auto; ">
             <!-- Section to display the list of items -->
-            <h3 id="itemListHeading" aria-label="Item List">Item List</h3>
-            <table class="table items" aria-labelledby="itemListHeading">
+            <table class="previewtable table items mt-5" aria-labelledby="itemListHeading">
                 <thead>
                     <!-- Table headers for item details -->
                     <tr>
@@ -238,10 +271,25 @@
                     <!-- New rows with item data will be added dynamically here -->
                 </tbody>
             </table>
+            </div>
+
+
+
+
+            <div class="d-flex justify-content-center">
+                <button id="filterAll" class="btn btn-secondary">All</button>
+                <button id="filterHigh" class="btn btn-danger">High Priority</button>
+                <button id="filterMedium" class="btn btn-warning">Medium Priority</button>
+                <button id="filterLow" class="btn btn-success">Low Priority</button>
+                <button id="filterCompleted" class="btn btn-primary">Completed</button>
+                <button id="filterPending" class="btn btn-info text-white">Pending</button>
+            </div>
+
+
 
             <!-- Section for displaying an overview of item status -->
-            <h3 id="statusOverviewHeading" aria-label="Item Status Overview">Item Status Overview</h3>
-            <table class="table" aria-labelledby="statusOverviewHeading">
+            <h3 id="statusOverviewHeading" class="text-center mt-5" aria-label="Item Status Overview">Checklist Overview</h3>
+            <table class="previewtable table" aria-labelledby="statusOverviewHeading">
                 <thead>
                     <!-- Table headers for status overview -->
                     <tr>
@@ -426,6 +474,58 @@
                         updateItemCounts();
                     });
 
+
+                    // Filter by Priority
+                    $("#filterHigh").click(function () {
+                        filterTableByPriority("High");
+                    });
+
+                    $("#filterMedium").click(function () {
+                        filterTableByPriority("Medium");
+                    });
+
+                    $("#filterLow").click(function () {
+                        filterTableByPriority("Low");
+                    });
+
+                    // Filter by Completion Status
+                    $("#filterCompleted").click(function () {
+                        filterTableByCompletion(true);
+                    });
+
+                    $("#filterPending").click(function () {
+                        filterTableByCompletion(false);
+                    });
+
+                    // Filter by All (Show all rows)
+                    $("#filterAll").click(function () {
+                        $("#itemTable tr").show();
+                    });
+
+                    // Function to filter table by priority
+                    function filterTableByPriority(priority) {
+                        $("#itemTable tr").each(function () {
+                            var rowPriority = $(this).find("td:eq(5)").text();
+                            if (rowPriority === priority) {
+                                $(this).show();
+                            } else {
+                                $(this).hide();
+                            }
+                        });
+                    }
+
+                    // Function to filter table by completion status
+                    function filterTableByCompletion(isCompleted) {
+                        $("#itemTable tr").each(function () {
+                            var checkbox = $(this).find(".completeCheckbox");
+                            if (checkbox.prop("checked") === isCompleted) {
+                                $(this).show();
+                            } else {
+                                $(this).hide();
+                            }
+                        });
+                    }
+
                     // Function to update the counts (Packed, Pending, Total)
                     function updateItemCounts() {
                         var totalItemsCount = packedItemsCount + pendingItemsCount;
@@ -435,7 +535,7 @@
                         $("#pendingCount").text(pendingItemsCount);
                         $("#totalCount").text(totalItemsCount);
                     }
-
+                    
                     // Function to append row to table
                     function appendRowToTable(rowData) {
                         var rowClass = "";
@@ -454,8 +554,8 @@
                             <td>${rowData.tripDate}</td>
                             <td>${rowData.quantity}</td>
                             <td>${rowData.priority}</td>
-                            <td><button class="btn btn-warning editBtn">Edit</button> 
-                                <button class="btn btn-danger deleteBtn">Delete</button>
+                            <td><button class="greenbutton btn editBtn">Edit</button> 
+                                <button class="lightgreenbutton btn deleteBtn">Delete</button>
                             </td>
                         </tr>`;
 
@@ -516,7 +616,6 @@
                     }
                 });
             </script>
-
         </main>
     </div>
     
