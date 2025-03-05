@@ -237,7 +237,7 @@ $(document).ready(function () {
             <td>${rowData.tripDate}</td>
             <td>${rowData.quantity}</td>
             <td>${rowData.priority}</td>
-            <td><button class="greybutton btn editBtn">Edit</button> 
+            <td class="text-end"><button class="greybutton btn editBtn">Edit</button> 
                 <button class="greybutton btn deleteBtn">Delete</button>
             </td>
         </tr>`;
