@@ -93,7 +93,13 @@
                 $("#welcome").addClass("welcome-box-dark").removeClass("welcome-box");
                 $("#footer").addClass("footer-dark");
                 $("#darkModeToggle").text("Light");
-                $("hr").addClass("separator"); // Add .separator to all <hr> elements
+                $("hr").addClass("seperator"); // Add .separator to all <hr> elements
+                $(".contact-form label").css("color", "white");
+                $(".contact-form textarea, .contact-form input, .contact-form select").css({
+                        "background-color": "#333840", // Dark gray background
+                        "color": "white" // White text color
+                    });
+                    $(".contact-form select option").css("color", "white"); // White text in select options
             }
 
             // Handle button click for dark mode toggle
@@ -116,6 +122,35 @@
                 // Toggle .separator class on all <hr> elements
                 $("hr").toggleClass("separator");
 
+
+                // CToggle Dark Mode for the Contact Form Labels
+                // Check the color of the first label
+                var currentColor = $(".contact-form label").first().css("color");
+                // If the color is rgb(33, 37, 41), change it to white, otherwise change to rgb(33, 37, 41)
+                if (currentColor === "rgb(33, 37, 41)") {
+                    $(".contact-form label").css("color", "white");
+                } else if (currentColor === "rgb(255, 255, 255)") {
+                    $(".contact-form label").css("color", "rgb(33, 37, 41)");
+                }
+
+
+                // Toggle Dark Mode for the contact form fields
+                var currentfieldColor = $(".contact-form textarea").first().css("background-color");
+                if (currentfieldColor === "rgb(255, 255, 255)") { 
+                    $(".contact-form textarea, .contact-form input, .contact-form select").css({
+                        "background-color": "#333840", // Dark gray background
+                        "color": "white" // White text color
+                    });
+                    $(".contact-form select option").css("color", "white"); // White text in select options
+                } else {
+                    $(".contact-form textarea, .contact-form input, .contact-form select").css({
+                        "background-color": "white", // Light background
+                        "color": "rgb(33, 37, 41)" // Dark text color
+                    });
+                    $(".contact-form select option").css("color", "rgb(33, 37, 41)"); // Dark text in select options
+                }
+
+
                 // Change the button text between "Dark" and "Light"
                 var buttonText = $("#darkModeToggle").text().trim();
                 if (buttonText === "Dark") {
@@ -128,6 +163,7 @@
             });
         });
     </script>
+
 
 
     <!-- Script that applies a transparency animation effect to the hero section -->
@@ -240,6 +276,90 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+
+
+        <script>
+            $(document).ready(function () {
+                // Initialize counters
+                var packedItemsCount = 0;
+                var pendingItemsCount = 0;
+                
+                // Load the saved table rows from localStorage when the page loads
+                loadTableRowsFromLocalStorage();
+            
+                // Function to append row to table
+                function appendRowToTable(rowData) {
+                    var rowClass = "";
+                    if (rowData.priority === "High") {
+                        rowClass = "table-danger";
+                    } else if (rowData.priority === "Medium") {
+                        rowClass = "table-warning";
+                    } else if (rowData.priority === "Low") {
+                        rowClass = "table-success";
+                    }
+        
+                    // Remove the completion checkbox from the row
+                    var newRow = `<tr class="${rowClass}">
+                        <td>${rowData.itemName}</td>
+                        <td>${rowData.itemDesc}</td>
+                        <td>${rowData.tripDate}</td>
+                        <td>${rowData.quantity}</td>
+                        <td>${rowData.priority}</td>
+                    </tr>`;
+        
+                    $("#itemTable").append(newRow);
+                }
+            
+                // Function to load rows from localStorage
+                function loadTableRowsFromLocalStorage() {
+                    var rows = JSON.parse(localStorage.getItem("itemRows")) || [];
+                    rows.forEach(function(rowData) {
+                        appendRowToTable(rowData);
+                        if (rowData.isCompleted) {
+                            packedItemsCount++;
+                        } else {
+                            pendingItemsCount++;
+                        }
+                    });
+                    updateItemCounts();
+                }
+        
+                // Function to update the counts (Packed, Pending, Total)
+                function updateItemCounts() {
+                    var totalItemsCount = packedItemsCount + pendingItemsCount;
+        
+                    // Update the table with the current counts (you can display these counts anywhere on the page)
+                    console.log("Packed: " + packedItemsCount);
+                    console.log("Pending: " + pendingItemsCount);
+                    console.log("Total: " + totalItemsCount);
+                }
+            });
+        </script>
+        
+        
+        <div style="margin-left: 15%; margin-right: 15%; overflow-x: auto; ">
+            <!-- Section to display the list of items -->
+            <h2 id="itemListHeading" class="text-center my-5" aria-label="Item List">Latest Checklist Activity</h2>
+            <hr>
+            <table class="table items previewtable" aria-labelledby="itemListHeading">
+                <thead>
+                    <!-- Table headers for item details -->
+                    <tr>
+                        <th scope="col" aria-label="Item name">Item Name</th>
+                        <th scope="col" aria-label="Item description">Description</th>
+                        <th scope="col" aria-label="Trip date">Trip Date</th>
+                        <th scope="col" aria-label="Quantity of items">Quantity</th>
+                        <th scope="col" aria-label="Priority level of item">Priority</th>
+                    </tr>
+                </thead>
+                <tbody id="itemTable">
+                    <!-- New rows with item data will be added dynamically here -->
+                </tbody>
+            </table>
+        </div>
+
+
     </main>
 
 
